@@ -24,6 +24,7 @@ volatile bool flag_controle = false;
 #define T_FLAG_LED 2.5        // en seconde
 #define T_FLAG_CONTROLE 0.005 // en seconde
 
+// caca
 void LED()
 {
     led1 = !led1;
