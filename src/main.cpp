@@ -1,20 +1,19 @@
 #include <mbed.h>
 
-
 // Initialisation des PIN
 
-//Initialisation Tension
+// Initialisation Tension
 
 AnalogIn analog_alim_tension(PB_0);
 float tension_micro_lu = 0;
 float tension_batterie = 0;
 
-//Initialisation Courant
+// Initialisation Courant
 AnalogIn analog_hall_effect(PB_1);
 float image_courant_lu_micro = 0;
 float mesure_courant_batt = 0;
 
-//Initialisation CNY70 
+// Initialisation CNY70
 InterruptIn encoder_pin(PA_7);
 volatile int compteur_tick = 0;
 float distance_m = 0;
@@ -34,11 +33,9 @@ float y = 0;
 float a = 0;
 float b = 0;
 
-volatile bool flag_led = false;
 volatile bool flag_controle = false;
-#define T_FLAG_LED 1          // en seconde
 #define T_FLAG_CONTROLE 0.001 // en seconde
-#define T_VITESSE 200e-6          // Intervalle de mesure de vitesse
+#define T_VITESSE 200e-6      // Intervalle de mesure de vitesse
 
 // Variables internes pour vitesse
 float ancienne_distance = 0;
@@ -46,7 +43,6 @@ float ancien_temps = 0;
 float vitesse = 0;
 
 Timer timer; // pour mesurer le temps écoulé
-
 
 void encoder_tick()
 {
