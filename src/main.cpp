@@ -29,6 +29,14 @@ volatile float vitesse = 0.0f;   // En km/h
 Timer tick_timer;
 Ticker t2;
 
+// Définition variables Energie calcule - SOC
+volatile float puissance_inst = 0.0f; 
+volatile float energie_T1 = 0.0f;
+volatile float energie_T2 = 0.0f;
+volatile float SOC = 0.0f;
+volatile float energie_100 = 2304;
+
+//Création de la tâche 
 volatile bool flag_controle = false;
 #define T_FLAG_CONTROLE 0.1f // Affichage tous les 100 ms
 
@@ -88,6 +96,12 @@ int main()
             b = y_1 - a * x1;
             y = a * x + b;
             mesure_courant_batt = y;
+
+            //Energie
+            puissance_inst = tension_batterie * mesure_courant_batt; 
+            energie_T1 = (puissance_inst * T_FLAG_CONTROLE)/3600; // Valeur de l'énergie en Wh 
+            energie_T2 = energie_T2 + energie_T1; 
+            SOC = (energie_T2 / energie_100) * 100 ; // Etat de charge de la batterie 
 
             // Affichage
             printf("Freq: %3.2f Hz | Vitesse: %3.3f km/h\n", freq_tick, vitesse);
