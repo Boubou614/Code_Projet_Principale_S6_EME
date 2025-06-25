@@ -104,7 +104,10 @@ int main()
             SOC = (energie_T2 / energie_100) * 100 ; // Etat de charge de la batterie 
 
             // Affichage
+            printf ("Tension: %3.2f V | Courant: %3.3f A", tension_batterie, mesure_courant_batt);
+            printf ("\n");
             printf("Freq: %3.2f Hz | Vitesse: %3.3f km/h\n", freq_tick, vitesse);
+            printf("Puissance: %3.2f W | SOC: %3.3f %", puissance_inst, SOC);
             flag_controle = false;
         }
     }
