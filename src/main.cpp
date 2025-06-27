@@ -101,7 +101,7 @@ int main()
             puissance_inst = tension_batterie * mesure_courant_batt; 
             energie_T1 = (puissance_inst * T_FLAG_CONTROLE)/3600; // Valeur de l'énergie en Wh 
             energie_T2 = energie_T2 + energie_T1; 
-            SOC = (energie_T2 / energie_100) * 100 ; // Etat de charge de la batterie 
+            SOC = ((energie_100 - energie_T2) / energie_100) * 100 ; // Etat de charge de la batterie 
 
             // Affichage
             printf ("Tension: %3.2f V | Courant: %3.3f A", tension_batterie, mesure_courant_batt);
